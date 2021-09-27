@@ -9,7 +9,7 @@
     <div class="cardInfo">
 
       <div class="cardCompName">
-        <p class="cardCompName__name">Photoshot</p>
+        <p class="cardCompName__name">{{compName}}</p>
         <ul class="cardCompName__tags">
           <li class="cardCompName__tags cardCompName__tags--new">NEW</li>
           <li class="cardCompName__tags cardCompName__tags--featured">FEATURED</li>
@@ -46,7 +46,10 @@
 
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  props:{
+    compName: String,
+  },
 }
 </script>
 
