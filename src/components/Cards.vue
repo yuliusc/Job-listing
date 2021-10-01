@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="chosenTagsDiv">
+    <div v-for="item in tagsToArr" :key="item.name" class="chosenTagsDiv">
 
-      {{this.chosenTags}}
+      <button @click="deleteTag(item)">{{ item }}</button>
 
     </div>
     <div v-for="job in jobs" :key="job.compName">
@@ -27,6 +27,7 @@ export default {
     return {
       jobs: [
         {
+          //dodać id do każdej pracy
           compName: 'Photoshot', jobName: 'Frontend Developer', date: '1d ago', time: 'Full time', place: 'USA only',
           newO: true, featured: true, stack: ['Frontend', 'Senior', 'Html', 'Css', 'JavaScript'], display: true
         },
@@ -53,7 +54,6 @@ export default {
           newO: false, featured: false, stack: ['Fullstack', 'Javascript', 'Midweight', 'Sass', 'Ruby'], display: true
         }
       ],
-      nameI: 'aha',
       chosenTags: [],
     }
   }
@@ -61,20 +61,32 @@ export default {
   methods: {
     displayTags(tech) {
       this.chosenTags.push(tech);
-      this.jobs.map(el => {
 
-        if (el.stack.some(r => this.chosenTags.includes(r))) {
-          el.display = true
+      this.jobs.map(job => {
+
+        if (job.stack.some(el => (this.chosenTags.map(tag => tag.toLowerCase())).includes(el.toLowerCase()))) {
+          job.display = true
         } else {
-          el.display = false
+          job.display = false
         }
       })
+
+    },
+
+    deleteTag(tag) {
+      this.tagsToArr = this.tagsToArr.filter(a => a != tag)
+      console.log(this.tagsToArr)
     }
   },
 
   watch: {
     chosenTags() {
-      console.log('zmiana')
+    }
+  },
+
+  computed: {
+    tagsToArr: function () {
+      return Array.from(new Set(this.chosenTags));
     }
   }
 
