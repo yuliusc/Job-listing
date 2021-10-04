@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="chosenTagsDiv">
-
-      {{this.chosenTags}}
-
+      <div v-for="item in chosenTags" :key="item.name">
+        <button @click="deleteTag(item)">{{ item }}</button>
+        <span>X</span>
+      </div>
     </div>
     <div v-for="job in jobs" :key="job.compName">
       <Card :compName="job.compName" :jobName="job.jobName" :date="job.date"
@@ -27,6 +28,7 @@ export default {
     return {
       jobs: [
         {
+          //dodać id do każdej pracy
           compName: 'Photoshot', jobName: 'Frontend Developer', date: '1d ago', time: 'Full time', place: 'USA only',
           newO: true, featured: true, stack: ['Frontend', 'Senior', 'Html', 'Css', 'JavaScript'], display: true
         },
@@ -53,30 +55,41 @@ export default {
           newO: false, featured: false, stack: ['Fullstack', 'Javascript', 'Midweight', 'Sass', 'Ruby'], display: true
         }
       ],
-      nameI: 'aha',
       chosenTags: [],
     }
   }
   ,
   methods: {
     displayTags(tech) {
-      this.chosenTags.push(tech);
-      this.jobs.map(el => {
+      if (!this.chosenTags.includes(tech))
+        this.chosenTags.push(tech);
 
-        if (el.stack.some(r => this.chosenTags.includes(r))) {
-          el.display = true
-        } else {
-          el.display = false
-        }
-      })
+      this.updateDisplay();
+
+    },
+
+    updateDisplay() {
+      if (this.chosenTags.length != 0) {
+        this.jobs.map(job => {
+
+          if (job.stack.some(el => (this.chosenTags.map(tag => tag.toLowerCase())).includes(el.toLowerCase()))) {
+            job.display = true
+          } else {
+            job.display = false
+          }
+        })
+      } else {
+        this.jobs.map(el => el.display = true)
+      }
+
+    },
+
+    deleteTag(tag) {
+      this.chosenTags = this.chosenTags.filter(a => a != tag)
+      this.updateDisplay();
     }
   },
 
-  watch: {
-    chosenTags() {
-      console.log('zmiana')
-    }
-  }
 
 }
 </script>
