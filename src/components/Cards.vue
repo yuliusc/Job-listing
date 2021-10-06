@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="cards_container">
     <div class="chosenTagsDiv">
-      <div v-for="item in chosenTags" :key="item.name">
-        <button @click="deleteTag(item)">{{ item }}</button>
-        <span>X</span>
+      <div v-for="item in chosenTags" :key="item.name" class="chosenTag">
+        <span>{{ item }}</span><button @click="deleteTag(item)">X</button>
       </div>
     </div>
+    <div class="break"></div>
     <div v-for="job in jobs" :key="job.compName">
       <Card :compName="job.compName" :jobName="job.jobName" :date="job.date"
             :time="job.time" :place="job.place" :newO="job.newO"
@@ -34,7 +34,7 @@ export default {
         },
         {
           compName: 'Manage', jobName: 'Fullstack Developer', date: '1d ago', time: 'Part Time', place: 'Remote',
-          newO: true, featured: true, stack: ['Fullstack', 'Midweight', 'Python', 'Eeact'], display: true
+          newO: true, featured: true, stack: ['Fullstack', 'Midweight', 'Python', 'React'], display: true
         },
         {
           compName: 'Account',
@@ -53,7 +53,27 @@ export default {
         {
           compName: 'Loop Studios', jobName: 'Software Engineer', date: '1w ago', time: 'Full Time', place: 'Worldwide',
           newO: false, featured: false, stack: ['Fullstack', 'Javascript', 'Midweight', 'Sass', 'Ruby'], display: true
-        }
+        },
+        {
+          compName: 'FaceIt', jobName: 'Junior Backend Developer', date: '2w ago', time: 'Full Time', place: 'UK only',
+          newO: false, featured: false, stack: ['Backend', 'Junior', 'Rub', 'RoR'], display: true
+        },
+        {
+          compName: 'Shortly', jobName: 'Junior Developer', date: '2w ago', time: 'Full Time', place: 'Worldwide',
+          newO: false, featured: false, stack: ['Frontend', 'Junior', 'HTLM', 'Sass', 'JavaScript'], display: true
+        },
+        {
+          compName: 'Insecure', jobName: 'Junior Frontend Developer', date: '2w ago', time: 'Full Time', place: 'USA olny',
+          newO: false, featured: false, stack: ['Frontend', 'Junior', 'Vue', 'Sass', 'JavaScript'], display: true
+        },
+        {
+          compName: 'EyeCam Co.', jobName: 'Full Stack Engineer', date: '3w ago', time: 'Full Time', place: 'Worldwide',
+          newO: false, featured: false, stack: ['Fullstack', 'Midweight', 'Django', 'Python', 'JavaScript'], display: true
+        },
+        {
+          compName: 'The Air Filter Company', jobName: 'Front-end Dev', date: '1mo ago', time: 'Part Time', place: 'Worldwide',
+          newO: false, featured: false, stack: ['Frontend', 'React', 'Sass', 'Junior', 'JavaScript'], display: true
+        },
       ],
       chosenTags: [],
     }
@@ -102,6 +122,22 @@ export default {
 
 .display {
   display: flex !important;
+}
+
+.cards_container{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.chosenTagsDiv{
+  background: white;
+  height: 74px;
+  margin-top: -37px;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
 }
 
 </style>
