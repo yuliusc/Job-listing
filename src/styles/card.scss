@@ -1,16 +1,16 @@
-$primaryColor: #5CA5A5;
+@import 'colors';
 
 .card {
   display: flex;
-  box-shadow: 0px 30px 55px 2px rgb(0 0 0 / 10%);
+  box-shadow: 0 30px 55px 2px rgb(0 0 0 / 10%);
   padding: 20px 30px 30px 0;
   margin-bottom: 2rem;
   background-color: white;
+  border-radius: 10px;
 }
 
 .cardInfo {
   width: 30%;
-
 }
 
 .cardPhoto {
@@ -18,14 +18,16 @@ $primaryColor: #5CA5A5;
   justify-content: center;
   align-items: center;
   width: 10%;
+  margin: 0 1.5rem;
 }
 
 .cardCompName {
   display: flex;
-align-items: center;
+  align-items: center;
   height: 70px;
+
   li {
-    margin: 0 10px;
+    margin: 0 6px;
   }
 
   &__name {
@@ -35,10 +37,9 @@ align-items: center;
 
   &__tags {
     display: flex;
-
     color: white;
     font-weight: 700;
-    padding: 8px 15px;
+    padding: 6px 15px 4px 15px;
     font-size: 14px;
     border-radius: 2rem;
 
@@ -51,19 +52,33 @@ align-items: center;
     }
   }
 }
-.cardPosition{
-  &__name{
+
+.cardPosition {
+  &__name {
     margin: 0;
     text-align: left;
+  }
+
+  &__name:hover {
+    color: $primaryColor;
+    cursor: pointer;
   }
 }
 
 .cardDetails {
   display: flex;
   justify-content: flex-start;
-p{
-  margin-right: 10px;
-}
+  align-items: center;
+  color: $lightTxt;
+
+  p {
+    margin-right: 10px;
+  }
+
+  &__dot {
+    font-size: 25px;
+    line-height: 0
+  }
 }
 
 .cardStack {
@@ -71,20 +86,119 @@ p{
   align-items: center;
   justify-content: flex-end;
   width: 60%;
+  flex-wrap: wrap;
+  padding: 2rem 0 2rem 1rem;
 
   &__elements {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    li{
-      background-color: rgb(92, 165, 165, 0.1);
+
+    button {
+      background-color: $lightPrimary;
       padding: 10px;
       border-radius: 5px;
       color: $primaryColor;
       font-weight: 700;
+      border: none;
+      margin-left: 1rem;
+    }
+
+    button:hover {
+      background-color: $primaryColor;
+      color: white;
+      cursor: pointer;
     }
   }
 }
 
+.chosenTag {
+  display: flex;
+  align-items: center;
 
+  span {
+    background-color: $lightPrimary;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    color: $primaryColor;
+    font-weight: 700;
+    border: none;
+    margin-left: 1rem;
+  }
+
+  &__delete {
+    border: none;
+    display: flex;
+    background-color: $primaryColor;
+    color: white;
+    padding: 11.5px;
+    border-radius: 0 5px 5px 0;
+  }
+
+  &__delete:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+
+  &__icon {
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
+  .cardInfo {
+    width: 100%;
+    padding-left: 1rem;
+  }
+  .cardStack {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+
+    &__elements{
+      margin-bottom: 1rem;
+    }
+  }
+  .cardPhoto {
+    width: 25%;
+    margin: -4rem 1.5rem 0 1.5rem;
+  }
+  .cardPhoto img {
+    height: 75px;
+  }
+  .cardCompName {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+
+    &__name{
+      margin: 1rem 0 0 0;
+    }
+
+    &__tags {
+      margin: 1rem 0 0 0;
+      padding: 0;
+
+      li{
+        padding: 6px 15px 4px 15px;
+        margin: 0 0 0 13px;
+      }
+    }
+  }
+  .cardPosition{
+    margin: 1rem 0 0 0;
+  }
+  .separator {
+    width: 98%;
+    height: 1px;
+    margin: 0 0 1rem 1rem;
+    background-color: black;
+  }
+
+}
 

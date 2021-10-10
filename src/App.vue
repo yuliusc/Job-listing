@@ -1,31 +1,58 @@
 <template>
   <div id="app">
-    <Cards />
+
+    <header>
+      <img src="../public/images/bg-header-desktop.svg" class="header--desktop">
+      <img src="../public/images/bg-header-mobile.svg" class="header--mobile">
+
+    </header>
+
+    <Cards/>
   </div>
 </template>
 
 <script>
-import Card from './components/Card.vue'
 import Cards from './components/Cards.vue'
 
 export default {
   name: 'App',
   components: {
     Cards,
-    Card
   }
 }
 </script>
 
 <style>
 @import "styles/general.css";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+header{
+  background: #5CA5A5;
+}
+header img{
+  width: 100%;
+}
+@media (min-width: 575px) {
+  .header--desktop {
+    display: block
+  }
+  .header--mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .header--mobile {
+    display: block;
+  }
+  .header--desktop {
+    display: none
+  }
 }
 
 </style>

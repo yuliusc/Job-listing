@@ -1,9 +1,9 @@
 <template>
 
-  <div class="card">
+  <div class="card" :class="{borderLeft: featured}">
 
     <div class="cardPhoto">
-      <img src="../../public/images/photosnap.svg">
+      <img v-bind:src="require(`../../public/images/`+imgSrc)">
     </div>
 
     <div class="cardInfo">
@@ -22,19 +22,21 @@
 
       <div class="cardDetails">
         <p class="cardDetails__date">{{date}}</p>
-        <p class="cardDetails__dot">o</p>
+        <p class="cardDetails__dot">&#8226;</p>
         <p class="cardDetails__time"> {{time}} </p>
-        <p class="cardDetails__dot">o</p>
+        <p class="cardDetails__dot">&#8226;</p>
         <p class="cardDetails__city"> {{place}} </p>
 
       </div>
 
     </div>
 
+    <div class="separator"></div>
+
     <div class="cardStack">
-      <ul class="cardStack__elements" v-for="tech in stack" :key="tech.compName">
-        <button @click="$emit('displayTags',tech)"> <li>{{tech}}</li></button>
-      </ul>
+      <div class="cardStack__elements" v-for="tech in stack" :key="tech.compName">
+        <button @click="$emit('displayTags',tech)">{{tech}}</button>
+      </div>
     </div>
 
   </div>
@@ -52,7 +54,8 @@ export default {
     place: String,
     newO: Boolean,
     featured: Boolean,
-    stack: Array
+    stack: Array,
+    imgSrc: String
   },
 
   emits:['displayTags'],
@@ -61,4 +64,9 @@ export default {
 
 <style>
 @import "../styles/card.css";
+
+.borderLeft{
+  border-left: 10px solid #5ca5a5
+}
+
 </style>
