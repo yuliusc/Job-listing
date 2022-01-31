@@ -1,30 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
 
-body{
+body {
   margin: 0;
-  background-color: #EFFAFA;
+  background-color: #effafa;
+  overflow-y: scroll !important;
 }
 
-p, span, h1, h2, h3, button, a, li{
-  font-family: 'Spartan', sans-serif;
+p,
+span,
+h1,
+h2,
+h3,
+button,
+a,
+li {
+  font-family: "Spartan", sans-serif;
 }
 
 ul {
   list-style-type: none;
 }
 
-.chosenTagsDiv{
+.chosenTagsDiv {
   display: flex;
 }
 
-.break{
+.break {
   margin: 2rem 0;
 }
 
-@media (min-width: 768px) and (max-width: 1050px){
-  .cardCompName{
+@media (min-width: 768px) and (max-width: 1050px) {
+  .cardCompName {
     margin-left: -6rem;
     margin-top: -20px;
   }
-
 }
