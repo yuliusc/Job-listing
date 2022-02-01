@@ -1,24 +1,8 @@
-# joblisting
+# Job listing with filters
 
-## Project setup
-```
-npm install
-```
+[Demo](https://gifted-banach-77c431.netlify.app/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Project built using Vue.js. Sample job offers built into the application are displayed to the user. You can select a keyword to filter through available jobs. You can choose more than one keyword.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Technologies:
+Vue.js, CSS (SCSS)
